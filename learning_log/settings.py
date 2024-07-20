@@ -32,7 +32,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*', 'learning-log-jgfr.onrender.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
