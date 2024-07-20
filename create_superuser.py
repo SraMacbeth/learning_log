@@ -1,12 +1,14 @@
 import os
 import django
-from django.contrib.auth.models import User
+from django.core.management import call_command
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "learning_log.settings")
 django.setup()
 
+from django.contrib.auth.models import User
+
 username = "admin"
-email = "emiliapol81@gmail.com"
+email = "admin@example.com"
 password = "admin"
 
 if not User.objects.filter(username=username).exists():
