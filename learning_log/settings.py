@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +25,7 @@ SECRET_KEY = 'django-insecure-wgi6n66$0k9f7$m=(qhe$$jn0_ug)1%j*sd$yt!oq4y+vd8+1v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -136,26 +134,3 @@ LOGIN_URL = '/users/login/$'
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
-
-# Heroku settings
-if os.getcwd() == '/app':
-    DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
-    }
-
-    # Honor the 'X-Forwarded-Proto' header for request.is_secure().
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-    # Allow all host headers.
-    ALLOWED_HOSTS = ['*']
-
-    # Static asset configuration
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
-
-else:
-    # Allow local development
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
